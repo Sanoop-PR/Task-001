@@ -61,7 +61,7 @@ export default function DeleteModal({ onConfirm, trigger,isLoading }: Props) {
               <Button variant="outlined" onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant="contained" color="error" onClick={handleDelete} loading={isLoading} loadingIndicator="deleting...">
+              <Button variant="contained" color="error" onClick={handleDelete} loading={isLoading} loadingPosition="end">
                 Delete
               </Button>
             </Stack>

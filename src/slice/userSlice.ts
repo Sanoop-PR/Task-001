@@ -76,16 +76,18 @@ const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(getAllUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
-        state.loading = false;
-        state.users = action.payload;
-      })
+      .addCase(
+        getAllUsers.fulfilled,
+        (state, action: PayloadAction<User[]>) => {
+          state.loading = false;
+          state.users = action.payload;
+        }
+      )
       .addCase(getAllUsers.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch users";
       });
 
-    // ➕ ADD
     builder
       .addCase(addUser.pending, (state) => {
         state.addLoading = true;
@@ -100,8 +102,7 @@ const userSlice = createSlice({
         state.addLoading = false;
         state.addError = action.error.message || "Failed to add user";
       });
-
-    // 🔁 UPDATE
+// update
     builder
       .addCase(updateUser.pending, (state) => {
         state.updateLoading = true;
@@ -118,8 +119,7 @@ const userSlice = createSlice({
         state.updateLoading = false;
         state.updateError = action.error.message || "Failed to update user";
       });
-
-    // 🗑️ DELETE
+// delete
     builder
       .addCase(deleteUser.pending, (state) => {
         state.deleteLoading = true;
