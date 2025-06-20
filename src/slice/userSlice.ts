@@ -102,7 +102,7 @@ const userSlice = createSlice({
         state.addLoading = false;
         state.addError = action.error.message || "Failed to add user";
       });
-// update
+    // update
     builder
       .addCase(updateUser.pending, (state) => {
         state.updateLoading = true;
@@ -119,7 +119,7 @@ const userSlice = createSlice({
         state.updateLoading = false;
         state.updateError = action.error.message || "Failed to update user";
       });
-// delete
+    // delete
     builder
       .addCase(deleteUser.pending, (state) => {
         state.deleteLoading = true;

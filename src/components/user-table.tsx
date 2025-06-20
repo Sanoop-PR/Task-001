@@ -8,10 +8,11 @@ import { deleteUser, getAllUsers, updateUser } from '../slice/userSlice';
 import { useEffect } from 'react';
 import type { User } from '../type';
 import DeleteModal from './delete-modal';
+import { Alert } from '@mui/material';
 
 export default function UserTable() {
     const dispatch = useAppDispatch();
-    const { users, error, updateLoading,deleteLoading } = useAppSelector((state) => state.users);
+    const { users, error, updateLoading, deleteLoading, deleteError,updateError,addError } = useAppSelector((state) => state.users);
 
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', width: 70 },
@@ -78,15 +79,32 @@ export default function UserTable() {
 
 
     return (
-        <Paper sx={{ height: 500, width: '100%' }}>
-            <DataGrid
-                rows={users}
-                columns={columns}
-                initialState={{ pagination: { paginationModel } }}
-                pageSizeOptions={[7, 14]}
-                checkboxSelection
-                sx={{ border: 0 }}
-            />
-        </Paper>
+        <Stack spacing={3}>
+            {deleteError &&
+                <Alert variant="outlined" severity="error">
+                    {deleteError}
+                </Alert>
+            }
+            {updateError &&
+                <Alert variant="outlined" severity="error">
+                    {deleteError}
+                </Alert>
+            }
+            {addError &&
+                <Alert variant="outlined" severity="error">
+                    {deleteError}
+                </Alert>
+            }
+            <Paper sx={{ height: 500, width: '100%' }}>
+                <DataGrid
+                    rows={users}
+                    columns={columns}
+                    initialState={{ pagination: { paginationModel } }}
+                    pageSizeOptions={[7, 14]}
+                    checkboxSelection
+                    sx={{ border: 0 }}
+                />
+            </Paper>
+        </Stack>
     );
 }

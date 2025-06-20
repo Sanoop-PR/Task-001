@@ -25,7 +25,7 @@ interface Props {
 
 export default function UserFormModal({ user, onSubmit, trigger, isLoading }: Props) {
   const [open, setOpen] = React.useState(false);
-    const [errors, setErrors] = React.useState<Record<string, string>>({});
+  const [errors, setErrors] = React.useState<Record<string, string>>({});
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -93,28 +93,28 @@ export default function UserFormModal({ user, onSubmit, trigger, isLoading }: Pr
   };
 
   const validate = () => {
-  const newErrors: Record<string, string> = {};
+    const newErrors: Record<string, string> = {};
 
-  if (!form.name.trim()) newErrors.name = 'Full name is required';
+    if (!form.name.trim()) newErrors.name = 'Full name is required';
 
-  if (!form.email.trim()) {
-    newErrors.email = 'Email is required';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-    newErrors.email = 'Enter a valid email address';
-  }
+    if (!form.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = 'Enter a valid email address';
+    }
 
-  if (!form.phone.trim()) {
-    newErrors.phone = 'Phone number is required';
-  } else if (!/^\d{10}$/.test(form.phone)) {
-    newErrors.phone = 'Enter a valid 10-digit phone number';
-  }
+    if (!form.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^\d{10}$/.test(form.phone)) {
+      newErrors.phone = 'Enter a valid 10-digit phone number';
+    }
 
-  if (!form.company.name.trim()) newErrors.company = 'Company name is required';
-  if (!form.address.city.trim()) newErrors.address = 'City is required';
+    if (!form.company.name.trim()) newErrors.company = 'Company name is required';
+    if (!form.address.city.trim()) newErrors.address = 'City is required';
 
-  setErrors(newErrors);
-  return Object.keys(newErrors).length === 0;
-};
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
 
   const handleSubmit = () => {
