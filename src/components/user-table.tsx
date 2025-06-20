@@ -15,14 +15,14 @@ export default function UserTable() {
     const { users, error, updateLoading, deleteLoading, deleteError,updateError,addError } = useAppSelector((state) => state.users);
 
     const columns: GridColDef[] = [
-        { field: 'id', headerName: 'ID', width: 70 },
+        // { field: 'id', headerName: 'ID', width: 70 },
         { field: 'name', headerName: 'Full name', width: 130 },
-        { field: 'email', headerName: 'Email', width: 130 },
+        { field: 'email', headerName: 'Email', width: 200 },
         { field: 'phone', headerName: 'Phone', width: 130 },
         {
             field: 'company',
-            headerName: 'website',
-            width: 90,
+            headerName: 'Company',
+            width: 130,
             valueGetter: (params: any) => params.name ?? "N/A",
         },
         {

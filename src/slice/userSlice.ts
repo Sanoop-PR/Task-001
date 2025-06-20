@@ -24,7 +24,7 @@ const initialState: UserState = {
   users: [],
   loading: false,
   error: null,
-  nextId: 1001,
+  nextId: Date.now(),
   addLoading: false,
   addError: null,
   updateLoading: false,
