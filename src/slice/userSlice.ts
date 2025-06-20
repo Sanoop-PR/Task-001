@@ -5,6 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import axios from "axios";
 import type { User } from "../type";
+import { BASE_URL } from "../constant";
 
 interface UserState {
   users: User[];
@@ -34,9 +35,7 @@ const initialState: UserState = {
 
 // 👉 Only fetch uses API
 export const getAllUsers = createAsyncThunk("users/get", async () => {
-  const res = await axios.get<User[]>(
-    "https://jsonplaceholder.typicode.com/users"
-  );
+  const res = await axios.get<User[]>(`${BASE_URL}/users`);
   return res.data;
 });
 
